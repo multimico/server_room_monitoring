@@ -1,0 +1,63 @@
+services:
+  influxdb:
+    image: influxdb:2
+    container_name: influxdb
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: adlsdlp13
+      DOCKER_INFLUXDB_INIT_PASSWORD: multimico13
+      DOCKER_INFLUXDB_INIT_ORG: gs
+      DOCKER_INFLUXDB_INIT_BUCKET: server_room
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: example_token
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+    networks:
+      - app-network
+  
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana-provisioning/:/etc/grafana/provisioning
+      - ./grafana-provisioning/custom.ini:/etc/grafana/grafana.ini
+    networks:
+      - app-network
+
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - /home/multimico/server_room_temp/Caddyfile:/etc/caddy/Caddyfile
+      - ./site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app-network
+    
+volumes:
+  influxdb-data:
+    external: true
+  influxdb-config:
+    external: true
+  grafana-storage:
+    external: true
+  caddy_data:
+    external: true
+  caddy_config:
+    external: true
+    
+    
+networks:
+  app-network:
+  
