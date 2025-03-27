@@ -1,6 +1,7 @@
 services:
   influxdb:
     image: influxdb:2
+    restart: always
     container_name: influxdb
     environment:
       DOCKER_INFLUXDB_INIT_MODE: setup
@@ -17,6 +18,7 @@ services:
   
   grafana:
     image: grafana/grafana:latest
+    restart: always
     container_name: grafana
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_USERNAME}
@@ -30,7 +32,7 @@ services:
 
   caddy:
     image: caddy:latest
-    restart: unless-stopped
+    restart: always
     cap_add:
       - NET_ADMIN
     ports:
