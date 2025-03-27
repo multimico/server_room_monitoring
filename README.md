@@ -17,7 +17,7 @@ The repository includes a docker-compose.yml file that sets up three container
 To build and run the containers, execute the following command:
 ```bash
 
-docker-compose up -d
+docker-compose up
 ```
 
 Once deployed, you can access the Grafana dashboard through your web browser via the configured Caddy reverse proxy.
