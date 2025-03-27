@@ -5,9 +5,11 @@ Overview
 
 The repository includes a docker-compose.yml file that sets up three containers:
 
-InfluxDB: A time-series database that stores the collected metrics.
-Grafana: A visualization tool that displays the data in a customizable dashboard.
-Caddy: A reverse proxy that exposes the Grafana dashboard securely via a web browser.
+**InfluxDB**: A time-series database that stores the collected metrics.
+
+**Grafana**: A visualization tool that displays the data in a customizable dashboard.
+
+**Caddy**: A reverse proxy that exposes the Grafana dashboard securely via a web browser.
 
 
 ## Usage
