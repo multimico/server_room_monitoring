@@ -19,8 +19,8 @@ scrape_configs:
     metrics_path: /metrics
     scheme: http
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: ["prometheus_adlsdlp4b:9090"]
 
-  #- job_name: adlsdlp4b
-  # static_configs:
-  #   - targets: ["160.85.119.33:9200"]
+  - job_name: adlsdlp4b
+    static_configs:
+      - targets: ["160.85.119.33:9100"]
