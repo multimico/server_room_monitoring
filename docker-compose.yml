@@ -37,7 +37,7 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
     restart: unless-stopped
     volumes:
-      - /home/multimico/server_room_temp/prometheus.yml
+      - /home/multimico/server_room_temp/prometheus.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
     networks:
       - app-network
@@ -72,7 +72,6 @@ volumes:
   caddy_config:
     external: true
   prom_data:
-    external: true
     
     
 networks:
