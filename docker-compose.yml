@@ -30,6 +30,19 @@ services:
     networks:
       - app-network
 
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus_adlsdlp4b
+    command: 
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+    volumes:
+      - /home/multimico/server_room_temp/prometheus.yml
+      - prom_data:/prometheus
+    networks:
+      - app-network
+
+
   caddy:
     image: caddy:latest
     restart: always
@@ -57,6 +70,8 @@ volumes:
   caddy_data:
     external: true
   caddy_config:
+    external: true
+  prom_data:
     external: true
     
     
