@@ -39,7 +39,8 @@ services:
     volumes:
       - /home/multimico/server_room_temp/prometheus.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
-    network_mode: "host"
+    networks:
+      - app-network
 
   caddy:
     image: caddy:latest
