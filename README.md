@@ -24,4 +24,4 @@ docker-compose up
 
 Once deployed, you can access the Grafana dashboard through your web browser via the configured Caddy reverse proxy.
 
-@ https://grafana-dlp.esi.li
+https://grafana-dlp.esi.li
