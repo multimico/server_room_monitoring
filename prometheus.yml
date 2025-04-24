@@ -19,4 +19,4 @@ scrape_configs:
     metrics_path: /metrics
     scheme: http
     static_configs:
-      - targets: ["adlsdlp4b:80"]
+      - targets: ["clt-lab-n-1183.zhaw.ch:80"]
