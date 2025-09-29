@@ -20,3 +20,14 @@ scrape_configs:
     scheme: http
     static_configs:
       - targets: ["clt-lab-n-1183.zhaw.ch:80"]
+  
+  - job_name: 'incus-server'
+    honor_timestamps: true
+    scrape_interval: 30s
+    scrape_timeout: 20s
+    metrics_path: /1.0/metrics
+    scheme: https
+    tls_config:
+      insecure_skip_verify: true
+    static_configs:
+      - targets: ["160.85.247.124:8444"]  # Replace with actual IP

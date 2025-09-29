@@ -36,6 +36,8 @@ services:
     command: 
       - '--config.file=/etc/prometheus/prometheus.yml'
     restart: unless-stopped
+    ports:
+      - "9090:9090"
     volumes:
       - /home/multimico/server_room_temp/prometheus.yml:/etc/prometheus/prometheus.yml
       - prom_data:/prometheus
